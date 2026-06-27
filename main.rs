@@ -1,32 +1,16 @@
 fn main(){
-    // Ownership
-    let v: Vec<i32> = Vec::new();
-    // let mut v ...-> Compile error
-    v.len();
-    println!("{:?}", v);
-
     let mut v: Vec<i32> = Vec::new();
-    // let v: ... ->  Compile error
     v.push(1);
-    println!("{:?}", v);
+    v.push(2);
+    v.push(3);
+    println!("v: {:?}", v);
 
-    // Borrowing
-    let v: Vec<i32> = Vec::new();
-    let v1 = &v; //vi has bowwoed from v
-    let v2 = &v; //v2 has also bowwoed from v
-    v.len();
-    println!("{:?}", v);
-    v1.len();
-    println!("{:?}", v1);
-    v2.len();
-    println!("{:?}", v2);
+    let _last_val = v.pop();
+    println!("_last_val: {:?}", _last_val);
+    println!("v: {:?}", v);
 
-    // Mutable borrowing
-    let mut v: Vec<i32> = Vec::new();
-    let v1 = &mut v; //1st mutable reference
-    // let v2 = &mut v; //2nd mutable reference
-    // error:cannot borrow `v` as mutable more than once at a time
-    v1.push(1); 
-    println!("{:?}", v1);
-
+    let first = v[0];
+    let second = v.get(1);
+    println!("first: {:?}", first);
+    println!("second: {:?}", second);
 }
